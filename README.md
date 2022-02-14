@@ -2,7 +2,7 @@
 
 This is an application to explore microservices solution supported by micronaut framework
 
-#### This demo includes examples of
+## This demo includes examples of
 
  - Endpoints exposure
  - Rest API (json) calls

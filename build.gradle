@@ -1,0 +1,75 @@
+plugins {
+    id "java"
+    id "idea"
+    id "checkstyle"
+    id "com.github.johnrengelman.shadow" version "7.1.1"
+    id "io.micronaut.application" version "3.2.0"
+}
+
+version = "0.1"
+group = "com.nicovivas"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    // Rest application
+    annotationProcessor("io.micronaut:micronaut-http-validation")
+    annotationProcessor("io.micronaut.spring:micronaut-spring-annotation")
+    annotationProcessor("io.micronaut.spring:micronaut-spring-boot")
+    annotationProcessor("io.micronaut.spring:micronaut-spring-web-annotation")
+    implementation("io.micronaut:micronaut-validation")
+    implementation("io.micronaut:micronaut-http-server")
+    implementation("io.micronaut:micronaut-jackson-databind")
+    implementation("io.micronaut:micronaut-runtime")
+    implementation("org.springframework.boot:spring-boot-starter")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    runtimeOnly("io.micronaut.spring:micronaut-spring-boot")
+    runtimeOnly("io.micronaut.spring:micronaut-spring-web")
+
+    // Repositories
+    implementation("io.micronaut:micronaut-http-client")
+
+     // Reactor
+    implementation("io.micronaut.reactor:micronaut-reactor")
+    implementation("io.micronaut.reactor:micronaut-reactor-http-client")
+
+    // Utils
+    annotationProcessor("io.micronaut.openapi:micronaut-openapi")
+    annotationProcessor("org.projectlombok:lombok")
+    compileOnly("org.projectlombok:lombok")
+    implementation("io.swagger.core.v3:swagger-annotations")
+    runtimeOnly("org.apache.logging.log4j:log4j-api:2.17.1")
+    implementation("org.apache.logging.log4j:log4j-core:2.17.1")
+
+    implementation("jakarta.annotation:jakarta.annotation-api")
+
+    // Test
+    testAnnotationProcessor("io.micronaut.spring:micronaut-spring-annotation")
+    testAnnotationProcessor("io.micronaut.spring:micronaut-spring-boot")
+    testAnnotationProcessor("io.micronaut.spring:micronaut-spring-web-annotation")
+    testImplementation("org.mockito:mockito-core")
+}
+
+
+application {
+    mainClass.set("com.nicovivas.Application")
+}
+java {
+    sourceCompatibility = JavaVersion.toVersion("11")
+    targetCompatibility = JavaVersion.toVersion("11")
+}
+
+graalvmNative.toolchainDetection = false
+micronaut {
+    runtime("netty")
+    testRuntime("junit5")
+    processing {
+        incremental(true)
+        annotations("com.nicovivas.*")
+    }
+}
+
+

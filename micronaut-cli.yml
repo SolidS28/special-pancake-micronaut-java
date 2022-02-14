@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: com.nicovivas
+testFramework: junit
+sourceLanguage: java
+buildTool: gradle
+features: [annotation-api, app-name, gradle, hibernate-validator, http-client, jackson-databind, java, java-application, junit, log4j2, lombok, micronaut-build, mockito, netty-server, openapi, properties, reactor, reactor-http-client, readme, shade, spring, spring-boot, spring-web]
