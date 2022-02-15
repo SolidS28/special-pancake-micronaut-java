@@ -5,7 +5,10 @@
 <module name="Checker">
     <module name="TreeWalker">
         <module name="AvoidStarImport">
-            <property name="severity" value="warning" />
+            <property name="severity" value="error" />
+        </module>
+        <module name="UnusedImports">
+            <property name="severity" value="error" />
         </module>
     </module>
 </module>
